@@ -1,0 +1,3 @@
+# PayShield — Digital Banking System with Real-Time Fraud Detection
+
+PayShield is a full-stack digital banking application where users can create accounts, transfer funds, apply for loans and view transaction statements. It features a real-time fraud detection engine that automatically flags suspicious transactions based on rule-based logic such as high value transfers, rapid successive transactions and transfers to new recipients. Built using React.js, Node.js, Express.js and MongoDB with JWT authentication, PayShield demonstrates core System Design principles, OOP concepts, SOLID principles and Design Patterns including Command, Observer, Strategy, Factory and Singleton.
