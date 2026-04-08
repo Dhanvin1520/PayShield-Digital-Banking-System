@@ -1,11 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import { IAccount, AccountType, AccountStatus } from '../interfaces/IAccount';
 
-/**
- * Account Model
- * Base model that supports both Savings and Checking accounts
- * Demonstrates Inheritance through discriminators and Liskov Substitution Principle
- */
+
 const AccountSchema: Schema = new Schema(
   {
     accountNumber: {
@@ -33,12 +29,10 @@ const AccountSchema: Schema = new Schema(
       enum: Object.values(AccountStatus),
       default: AccountStatus.ACTIVE,
     },
-    // Savings account specific
     interestRate: {
       type: Number,
       default: null,
     },
-    // Checking account specific
     overdraftLimit: {
       type: Number,
       default: null,
@@ -49,9 +43,7 @@ const AccountSchema: Schema = new Schema(
   }
 );
 
-/**
- * Generate unique account number before saving
- */
+
 AccountSchema.pre<IAccount>('save', async function (next) {
   if (!this.accountNumber) {
     const count = await mongoose.model('Account').countDocuments();
@@ -60,10 +52,6 @@ AccountSchema.pre<IAccount>('save', async function (next) {
   next();
 });
 
-/**
- * Virtual — Calculate interest for savings accounts
- * Demonstrates Abstraction: complex calculation hidden behind simple property
- */
 AccountSchema.virtual('annualInterest').get(function (this: IAccount) {
   if (this.type === AccountType.SAVINGS && this.interestRate) {
     return this.balance * this.interestRate;
@@ -71,10 +59,7 @@ AccountSchema.virtual('annualInterest').get(function (this: IAccount) {
   return 0;
 });
 
-/**
- * Method — Check if account can process withdrawal
- * Demonstrates Encapsulation: overdraft logic internal to model
- */
+
 AccountSchema.methods.canWithdraw = function (amount: number): boolean {
   if (this.type === AccountType.CHECKING && this.overdraftLimit) {
     return this.balance + this.overdraftLimit >= amount;

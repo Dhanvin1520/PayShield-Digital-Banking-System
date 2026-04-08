@@ -1,11 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import { ITransaction, TransactionType, TransactionStatus } from '../interfaces/ITransaction';
 
-/**
- * Transaction Model
- * Represents a financial transaction between accounts
- * Works with the Command pattern for execute/undo operations
- */
+
 const TransactionSchema: Schema = new Schema(
   {
     fromAccount: {
@@ -48,13 +44,11 @@ const TransactionSchema: Schema = new Schema(
     },
   },
   {
-    timestamps: false, // We use our own timestamp field
+    timestamps: false, 
   }
 );
 
-/**
- * Index for efficient queries on transaction history
- */
+
 TransactionSchema.index({ fromAccount: 1, timestamp: -1 });
 TransactionSchema.index({ toAccount: 1, timestamp: -1 });
 TransactionSchema.index({ flagged: 1 });

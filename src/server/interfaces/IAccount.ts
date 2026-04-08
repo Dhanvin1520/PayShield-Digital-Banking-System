@@ -1,10 +1,6 @@
 import { Document } from 'mongoose';
 
-/**
- * IAccount Interface
- * Defines the contract for Account entities
- * Base interface supports Liskov Substitution — SavingsAccount and CheckingAccount
- */
+
 export enum AccountType {
   SAVINGS = 'savings',
   CHECKING = 'checking',
@@ -22,8 +18,8 @@ export interface IAccount extends Document {
   type: AccountType;
   balance: number;
   status: AccountStatus;
-  interestRate?: number;    // For savings accounts
-  overdraftLimit?: number;  // For checking accounts
+  interestRate?: number;    
+  overdraftLimit?: number; 
   createdAt: Date;
   updatedAt: Date;
 }
