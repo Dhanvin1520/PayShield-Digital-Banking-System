@@ -1,9 +1,6 @@
 import { Document } from 'mongoose';
 
-/**
- * ITransaction Interface
- * Defines the contract for Transaction entities
- */
+
 export enum TransactionType {
   TRANSFER = 'transfer',
   DEPOSIT = 'deposit',

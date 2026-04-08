@@ -2,30 +2,18 @@ import Account from '../../models/Account';
 import { IAccount, AccountType, AccountStatus } from '../../interfaces/IAccount';
 import mongoose from 'mongoose';
 
-/**
- * AccountFactory — Factory Pattern
- * 
- * Creates different types of bank accounts (Savings, Checking)
- * with their specific configurations without exposing creation logic.
- * 
- * Design Pattern: Factory (Creational)
- * SOLID: Open/Closed Principle — new account types can be added
- * OOP: Abstraction — creation details hidden from callers
- */
+
 class AccountFactory {
    /**
-    * Create a new bank account based on the specified type
-    * Factory method that encapsulates account creation logic
     * 
-    * @param type - Type of account to create (savings or checking)
-    * @param userId - Owner of the account
-    * @returns Created account document
+    * @param type 
+    * @param userId
+    * @returns 
     */
    public static async createAccount(
       type: AccountType,
       userId: string
    ): Promise<IAccount> {
-      // Generate unique account number
       const count = await Account.countDocuments();
       const accountNumber = `PAY${String(count + 1001).padStart(7, '0')}`;
 
@@ -41,10 +29,7 @@ class AccountFactory {
       }
    }
 
-   /**
-    * Create a Savings Account
-    * Savings accounts have interest rates but no overdraft
-    */
+
    private static async createSavingsAccount(
       accountNumber: string,
       userId: string
@@ -55,7 +40,7 @@ class AccountFactory {
          type: AccountType.SAVINGS,
          balance: 0,
          status: AccountStatus.ACTIVE,
-         interestRate: 0.04, // 4% annual interest
+         interestRate: 0.04, 
          overdraftLimit: null,
       });
 
@@ -64,10 +49,7 @@ class AccountFactory {
       return account;
    }
 
-   /**
-    * Create a Checking Account
-    * Checking accounts have overdraft limits but no interest
-    */
+
    private static async createCheckingAccount(
       accountNumber: string,
       userId: string
@@ -79,7 +61,7 @@ class AccountFactory {
          balance: 0,
          status: AccountStatus.ACTIVE,
          interestRate: null,
-         overdraftLimit: 5000, // ₹5,000 overdraft limit
+         overdraftLimit: 5000, 
       });
 
       await account.save();
