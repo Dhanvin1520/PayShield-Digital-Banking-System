@@ -15,9 +15,8 @@ declare global {
   }
 }
 
-const authMiddleware = (req: Request, res: Response, next: NextFunction): void => {
+const authenticate = (req: Request, res: Response, next: NextFunction): void => {
   try {
-    
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       res.status(401).json({
@@ -41,7 +40,7 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction): void =
   }
 };
 
-const adminMiddleware = (req: Request, res: Response, next: NextFunction): void => {
+const authorizeAdmin = (req: Request, res: Response, next: NextFunction): void => {
   if (req.user?.role !== 'admin') {
     res.status(403).json({
       success: false,
@@ -52,4 +51,4 @@ const adminMiddleware = (req: Request, res: Response, next: NextFunction): void 
   next();
 };
 
-export { authMiddleware, adminMiddleware };
+export { authenticate, authorizeAdmin };
