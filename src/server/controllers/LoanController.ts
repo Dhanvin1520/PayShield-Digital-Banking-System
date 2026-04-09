@@ -1,19 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import LoanService from '../services/LoanService';
 
-/**
- * LoanController — HTTP Handler for Loan Routes
- *
- * Handles loan applications, status checks, and admin approvals.
- *
- * Design Architecture:
- *   - Controller-Service Pattern: Separates HTTP handling from domain logic
- *   - Abstraction: Hides Loan entity complexity from the routing layer
- *
- * SOLID Principles:
- *   - Single Responsibility: Only manages Loan-related HTTP interactions
- *   - Open/Closed: New loan types can be added without modifying this controller
- */
 class LoanController {
   private loanService: LoanService;
 
@@ -21,10 +8,6 @@ class LoanController {
     this.loanService = new LoanService();
   }
 
-  /**
-   * POST /api/loans/apply
-   * User applies for a new loan
-   */
   apply = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const { amount, purpose, termMonths } = req.body;
@@ -54,10 +37,6 @@ class LoanController {
     }
   };
 
-  /**
-   * GET /api/loans
-   * Get all loans for the authenticated user
-   */
   getLoans = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const loans = await this.loanService.getLoansByUserId(req.user!.id);
@@ -71,10 +50,6 @@ class LoanController {
     }
   };
 
-  /**
-   * GET /api/loans/:id
-   * Get a specific loan application by ID
-   */
   getLoanById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const loan = await this.loanService.getLoanById(req.params.id);
@@ -96,10 +71,6 @@ class LoanController {
     }
   };
 
-  /**
-   * PATCH /api/loans/:id/status
-   * Update loan status (Admin only)
-   */
   updateStatus = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const { status } = req.body;

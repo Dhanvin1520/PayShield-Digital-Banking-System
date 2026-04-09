@@ -4,7 +4,6 @@ import { authMiddleware, adminMiddleware } from '../middleware/auth';
 
 const router = Router();
 
-// All loan routes are protected
 router.use(authMiddleware);
 
 router.post('/apply', loanController.apply);
