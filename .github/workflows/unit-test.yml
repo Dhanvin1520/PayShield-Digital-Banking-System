@@ -1,0 +1,29 @@
+name: PayShield Unit Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Dependencies
+      working-directory: ./src/server
+      run: npm install
+
+    - name: Run Unit Tests
+      working-directory: ./src/server
+      run: npm run test
