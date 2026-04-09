@@ -7,7 +7,8 @@
     "dev": "ts-node-dev --respawn --transpile-only server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "seed": "ts-node ../db/seed.ts"
+    "seed": "ts-node ../db/seed.ts",
+    "test": "echo \"No tests implemented yet\" && exit 0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
