@@ -418,17 +418,7 @@ PayShield follows the **Agile** methodology with iterative sprints:
 
 ---
 
-## Team Members
 
-| # | Name | Role | Branch |
-|---|------|------|--------|
-| 1 | **Member 1 (Leader)** | Auth, Core Setup, Singleton | `feature/auth-core` |
-| 2 | **Member 2** | Accounts, Transactions, Factory, Command | `feature/accounts-transactions` |
-| 3 | **Member 3** | Fraud Detection, Strategy, Observer | `feature/fraud-detection` |
-| 4 | **Member 4** | React Frontend, Tailwind UI | `feature/frontend` |
-| 5 | **Member 5** | Documentation, Diagrams, Loans | `feature/docs-loans` |
-
----
 
 ## License
 
