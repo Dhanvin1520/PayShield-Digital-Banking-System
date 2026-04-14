@@ -2,7 +2,8 @@
 
 The ER diagram defines our data persistence layer in MongoDB, focusing on the relationships between Users, Accounts, and Transactions.
 
-![ER Diagram](./Enitity_relations/Enity_relationship_diagram_1.png)
+
+![ER Diagram](./Enitity_relations/Entity_relationship_diagram_1.jpeg)
 
 ### Data Entities:
 - **User**: Core identity with authentication details.
