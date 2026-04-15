@@ -410,7 +410,7 @@ PayShield follows the **Agile** methodology with iterative sprints:
 |-------|--------|
 | Planning & Requirements | ✅ Complete |
 | Design (Architecture, ER, Class Diagrams) | ✅ Complete |
-| Sprint 1 — Core Backend (40%) | 🟡 In Progress |
+| Sprint 1 — Core Backend (40%) | ✅ Complete|
 | Sprint 2 — Frontend & Integration | ⬜ Planned |
 | Sprint 3 — Testing & Deployment | ⬜ Planned |
 
