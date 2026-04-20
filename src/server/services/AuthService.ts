@@ -41,7 +41,7 @@ class AuthService {
     
     const user = await User.findOne({ email: credentials.email }).select('+password');
     if (!user) {
-      throw Object.assign(new Error('Invalid email or password'), { statusCode: 401 });
+      throw Object.assign(new Error('Account not found. Please register to continue.'), { statusCode: 404 });
     }
 
     const isMatch = await user.comparePassword(credentials.password);
