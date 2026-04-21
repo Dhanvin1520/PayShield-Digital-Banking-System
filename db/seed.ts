@@ -1,3 +1,7 @@
+// === DAY 1: KILLI AKSHITH KUMAR ===
+// Task: Build robust team-seeding logic for development
+// Files: db/seed.ts, src/server/controllers/AccountController.ts, src/server/routes/accountRoutes.ts
+
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import User from '../src/server/models/User';
