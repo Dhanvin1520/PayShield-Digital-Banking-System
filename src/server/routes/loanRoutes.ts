@@ -13,3 +13,4 @@ router.get('/:id', loanController.getLoanById);
 router.patch('/:id/status', adminMiddleware, loanController.updateStatus);
 
 export default router;
+
