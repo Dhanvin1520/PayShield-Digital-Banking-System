@@ -6,6 +6,7 @@ const router = Router();
 
 router.use(authMiddleware);
 
+// Loan Routes
 router.post('/apply', loanController.apply);
 router.get('/', loanController.getLoans);
 router.get('/all', adminMiddleware, loanController.getAllLoans);
