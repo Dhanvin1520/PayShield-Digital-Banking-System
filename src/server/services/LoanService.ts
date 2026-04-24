@@ -1,6 +1,7 @@
 import Loan from '../models/Loan';
 import { ILoan, ILoanApplicationInput, LoanStatus } from '../interfaces/ILoan';
 
+// LoanService
 class LoanService {
   async applyForLoan(userId: string, input: ILoanApplicationInput): Promise<ILoan> {
     const interestRate = 10.0;
@@ -39,3 +40,4 @@ class LoanService {
 }
 
 export default LoanService;
+

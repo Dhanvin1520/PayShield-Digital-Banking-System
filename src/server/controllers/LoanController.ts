@@ -117,3 +117,4 @@ class LoanController {
 }
 
 export default new LoanController();
+
