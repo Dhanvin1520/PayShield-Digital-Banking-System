@@ -39,7 +39,7 @@ class LoanService {
   }
 
   async getAllLoans(): Promise<ILoan[]> {
-    return await Loan.find({}).sort({ appliedAt: -1 });
+    return await Loan.find({}).sort({ appliedAt: -1 }).populate('userId', 'name email');
   }
 }
 

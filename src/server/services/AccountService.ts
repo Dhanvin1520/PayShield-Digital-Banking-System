@@ -32,6 +32,13 @@ class AccountService {
   async getAllAccounts(): Promise<IAccount[]> {
     return Account.find({}).sort({ createdAt: -1 }).populate('userId', 'name email');
   }
+
+  async getBeneficiaries(currentUserId: string): Promise<IAccount[]> {
+    // Return one account per user (excluding the current user) to act as a contact list
+    return Account.find({ userId: { $ne: currentUserId } })
+      .populate('userId', 'name email')
+      .sort({ 'userId.name': 1 });
+  }
 }
 
 export default AccountService;

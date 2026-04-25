@@ -14,7 +14,7 @@ interface FlaggedTransaction {
   status: string;
   flagged: boolean;
   description?: string;
-  createdAt: string;
+  timestamp: string;
 }
 
 function formatCurrency(amount: number) {
@@ -180,7 +180,7 @@ export default function FraudPage() {
                       {tx.description || <span style={{ color: 'var(--color-text-muted)' }}>—</span>}
                     </td>
                     <td style={{ color: 'var(--color-text-secondary)' }}>
-                      {formatDateTime(tx.createdAt)}
+                      {formatDateTime(tx.timestamp)}
                     </td>
                     <td><span className="badge badge-warning">Under Review</span></td>
                   </tr>

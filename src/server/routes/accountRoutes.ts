@@ -9,6 +9,7 @@ router.use(authMiddleware);
 router.post('/', accountController.createAccount);
 router.get('/', accountController.getAccounts);
 router.get('/balance/total', accountController.getTotalBalance);
+router.get('/beneficiaries', accountController.getBeneficiaries);
 router.get('/:id', accountController.getAccountById);
 
 export default router;

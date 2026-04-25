@@ -541,3 +541,74 @@ body {
 }
 
 .auth-switch a:hover { text-decoration: underline; }
+
+/* --- DATA TABLE --- */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.data-table th {
+  background: var(--color-bg);
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+.data-table tr:hover td {
+  background-color: #fcfcfd;
+}
+
+.mono-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.account-number {
+  background: var(--color-bg);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--color-primary);
+}
+
+/* --- LOADING & EMPTY STATES --- */
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  gap: 1rem;
+}
+
+.loading-text {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.badge-neutral {
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+}
+
+/* Utility for grid gap */
+.gap-24 { gap: 24px; }
+.mt-20 { margin-top: 20px; }

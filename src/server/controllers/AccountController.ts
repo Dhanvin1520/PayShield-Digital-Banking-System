@@ -109,6 +109,23 @@ class AccountController {
       next(error);
     }
   };
+
+  /**
+   * GET /api/accounts/beneficiaries
+   * Get all other user accounts to populate the contacts list
+   */
+  getBeneficiaries = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const beneficiaries = await this.accountService.getBeneficiaries(req.user!.id);
+
+      res.status(200).json({
+        success: true,
+        data: { beneficiaries, count: beneficiaries.length },
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default new AccountController();
