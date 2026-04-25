@@ -13,7 +13,11 @@
 
 **A full-stack digital banking application with real-time fraud detection**
 
-</div>
+---
+
+### 🌐 Live Links
+- **Frontend (Vercel):** [https://pay-shield-digital-banking-system.vercel.app](https://pay-shield-digital-banking-system.vercel.app)
+- **Backend API (Render):** [https://payshield-digital-banking-system.onrender.com](https://payshield-digital-banking-system.onrender.com)
 
 ---
 
@@ -419,10 +423,24 @@ PayShield follows the **Agile** methodology with iterative sprints:
 ---
 
 
+## 🔑 Demo Credentials
 
-## License
+| Account | Email | Password | Role |
+|:---|:---|:---|:---|
+| **Admin** | `dhanvin@payshield.com` | `password123` | Full Oversight |
+| **User** | `dhanvin@gmail.com` | `password123` | Standard Banking |
 
-This project is developed as part of the **SDSE Capstone Project** at Rishihood University.
+---
+
+## 👥 Team Members
+
+| Name | ID | Role |
+|:---|:---|:---|
+| **Dhanvin Vadlamudi** | 2401010150 | Team Lead (Auth, Core Setup, Singleton) |
+| **Nipun Patlori** | 2401010323 | Backend (Accounts, Transactions, Factory, Command) |
+| **Tejaswini Palwai** | 2401010314 | Backend (Fraud Engine, Strategy, Observer) |
+| **Meka Chaitanya Sai** | 2401010275 | Structure (Routing, Middleware, Layout) |
+| **Killi Akshith Kumar** | 2401010230 | Documentation (Diagrams, Database, README) |
 
 ---
 
