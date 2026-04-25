@@ -37,6 +37,10 @@ class LoanService {
 
     return await Loan.findByIdAndUpdate(loanId, updateData, { new: true });
   }
+
+  async getAllLoans(): Promise<ILoan[]> {
+    return await Loan.find({}).sort({ appliedAt: -1 });
+  }
 }
 
 export default LoanService;
