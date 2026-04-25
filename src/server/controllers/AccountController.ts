@@ -126,6 +126,23 @@ class AccountController {
       next(error);
     }
   };
+
+  /**
+   * GET /api/accounts/all
+   * Admin — Get all accounts across all users
+   */
+  getAllAccounts = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const accounts = await this.accountService.getAllAccounts();
+
+      res.status(200).json({
+        success: true,
+        data: { accounts, count: accounts.length },
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default new AccountController();
