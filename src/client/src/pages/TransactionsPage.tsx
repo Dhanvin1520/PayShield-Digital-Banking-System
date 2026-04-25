@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowLeftRight, AlertTriangle, Send, X, AlertCircle, CheckCircle } from 'lucide-react';
+import { AlertTriangle, Send, X, AlertCircle, CheckCircle } from 'lucide-react';
 import AppLayout from '../components/layout/AppLayout';
 import { transactionService, accountService } from '../services/bankingService';
 

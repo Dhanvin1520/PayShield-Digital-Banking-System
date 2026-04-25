@@ -33,7 +33,7 @@ export default function Sidebar() {
       <nav className="sidebar-nav">
         <NavLink
           to="/dashboard"
-          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          className={({ isActive }: { isActive: boolean }) => `nav-link ${isActive ? 'active' : ''}`}
         >
           <LayoutDashboard size={20} />
           Dashboard
@@ -41,7 +41,7 @@ export default function Sidebar() {
 
         <NavLink
           to="/accounts"
-          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          className={({ isActive }: { isActive: boolean }) => `nav-link ${isActive ? 'active' : ''}`}
         >
           <CreditCard size={20} />
           Accounts
@@ -49,7 +49,7 @@ export default function Sidebar() {
 
         <NavLink
           to="/transactions"
-          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          className={({ isActive }: { isActive: boolean }) => `nav-link ${isActive ? 'active' : ''}`}
         >
           <ArrowLeftRight size={20} />
           Transactions
@@ -57,7 +57,7 @@ export default function Sidebar() {
 
         <NavLink
           to="/loans"
-          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          className={({ isActive }: { isActive: boolean }) => `nav-link ${isActive ? 'active' : ''}`}
         >
           <FileText size={20} />
           Loans
@@ -66,7 +66,7 @@ export default function Sidebar() {
         {user?.role === 'admin' && (
           <NavLink
             to="/fraud"
-            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            className={({ isActive }: { isActive: boolean }) => `nav-link ${isActive ? 'active' : ''}`}
           >
             <Shield size={20} />
             Fraud Alerts

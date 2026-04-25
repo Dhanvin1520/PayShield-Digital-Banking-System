@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CreditCard, Plus, ArrowRight, Shield, User, X, CheckCircle, AlertCircle } from 'lucide-react';
+import { CreditCard, Plus, X, CheckCircle, AlertCircle } from 'lucide-react';
 import AppLayout from '../components/layout/AppLayout';
 import { accountService } from '../services/bankingService';
 import { useAuth } from '../context/AuthContext';

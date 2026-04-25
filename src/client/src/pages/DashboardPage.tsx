@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CreditCard, ArrowLeftRight, FileText, AlertTriangle, Shield, CheckCircle, Smartphone } from 'lucide-react';
+import { CreditCard, ArrowLeftRight, FileText, AlertTriangle, Shield, Smartphone } from 'lucide-react';
 import AppLayout from '../components/layout/AppLayout';
 import { accountService, transactionService, loanService } from '../services/bankingService';
 import { useAuth } from '../context/AuthContext';
