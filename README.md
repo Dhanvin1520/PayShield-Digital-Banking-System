@@ -415,22 +415,14 @@ PayShield follows the **Agile** methodology with iterative sprints:
 | Planning & Requirements | ✅ Complete |
 | Design (Architecture, ER, Class Diagrams) | ✅ Complete |
 | Sprint 1 — Core Backend (40%) | ✅ Complete|
-| Sprint 2 — Frontend & Integration | ⬜ Planned |
-| Sprint 3 — Testing & Deployment | ⬜ Planned |
+| Sprint 2 — Frontend & Integration | ✅ Complete|
+| Sprint 3 — Testing & Deployment | ✅ Complete |
 
 📖 **Full SDLC documentation:** [SDLC Document](./docs/sdlc.md)
 
 ---
 
 
-## 🔑 Demo Credentials
-
-| Account | Email | Password | Role |
-|:---|:---|:---|:---|
-| **Admin** | `dhanvin@payshield.com` | `password123` | Full Oversight |
-| **User** | `dhanvin@gmail.com` | `password123` | Standard Banking |
-
----
 
 ## 👥 Team Members
 
