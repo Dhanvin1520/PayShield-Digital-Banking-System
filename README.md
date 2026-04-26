@@ -1,155 +1,290 @@
-# 🛡️ PayShield: Advanced Digital Banking & Fraud Detection
+# 🛡️ PayShield — Digital Banking System with Fraud Detection
 
 <div align="center">
 
-![PayShield Header](https://img.shields.io/badge/PayShield-Digital%20Banking-blue?style=for-the-badge&logo=shield)
+![PayShield](https://img.shields.io/badge/PayShield-Digital%20Banking-blue?style=for-the-badge&logo=shield)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-**Secure. Smart. Scalable.** — A production-ready banking ecosystem built with architectural excellence.
+**A full-stack digital banking application with real-time fraud detection**
 
 ---
 
-### 🌐 Live Deployment
-[**🚀 Launch App (Frontend)**](https://pay-shield-digital-banking-system.vercel.app) | [**📡 API Status (Backend)**](https://payshield-digital-banking-system.onrender.com)
+### 🌐 Live Links
+- **Frontend (Vercel):** [https://pay-shield-digital-banking-system.vercel.app](https://pay-shield-digital-banking-system.vercel.app)
+- **Backend API (Render):** [https://payshield-digital-banking-system.onrender.com](https://payshield-digital-banking-system.onrender.com)
+
+---
 
 </div>
 
 ---
 
-## 📖 Overview
+## 📋 Table of Contents
 
-PayShield is a comprehensive digital banking platform that moves beyond simple balance management. It integrates a **real-time, strategy-based fraud detection engine** that monitors every transaction for suspicious behavior, mirroring the security infrastructure of modern financial institutions.
-
-### ✨ Key Features
-- **🏦 Unified Banking**: Create Savings/Checking accounts with automated interest and overdraft logic.
-- **🛡️ Smart Security**: Rule-based fraud detection (High-value, Rapid-fire, and New Recipient checks).
-- **📊 Admin Oversight**: Dedicated dashboard for loan processing and fraud investigation.
-- **💸 Command-Driven Transfers**: Transaction integrity ensured through the Command Pattern.
-- **📈 Real-time Analytics**: Instant balance updates and interactive transaction history.
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [System Architecture](#system-architecture)
+- [Design Patterns](#design-patterns)
+- [ER Diagram](#er-diagram)
+- [OOP & SOLID Principles](#oop--solid-principles)
+- [Folder Structure](#folder-structure)
+- [Getting Started](#getting-started)
+- [API Endpoints](#api-endpoints)
+- [Fraud Detection Rules](#fraud-detection-rules)
+- [Team Members](#team-members)
 
 ---
 
-## 🛠️ Technical Excellence
+## Overview
 
-PayShield is built as a showcase of **System Design** and **Software Engineering best practices**.
+PayShield is a full-stack digital banking application where users can create accounts, transfer funds, apply for loans, and view transaction statements. It features a **real-time fraud detection engine** that automatically flags suspicious transactions based on rule-based logic such as:
 
-### 🎨 Design Patterns (Gang of Four)
-| Pattern | Implementation | Purpose |
+- 🚨 **High-value transfers** (> ₹50,000)
+- ⚡ **Rapid successive transactions** (> 3 in 1 minute)
+- 👤 **Transfers to new/unknown recipients**
+
+Built using **React.js**, **Node.js**, **TypeScript**, **Express.js**, and **MongoDB** with **JWT authentication**, PayShield demonstrates core **System Design principles**, **OOP concepts**, **SOLID principles**, and **Design Patterns**.
+
+---
+
+## Features
+
+| Feature | Description |
+|:---|:---|
+| 🔐 **User Authentication** | Secure registration and login with JWT tokens and bcrypt password hashing |
+| 🏦 **Account Management** | Create Savings and Checking accounts with unique account numbers |
+| 💸 **Fund Transfers** | Transfer money between accounts with real-time balance updates |
+| 📊 **Transaction History** | View complete transaction statements with filtering |
+| 📋 **Loan Applications** | Apply for Personal, Home, Education, or Business loans with EMI calculation |
+| 🛡️ **Fraud Detection** | Automatic flagging of suspicious transactions using rule-based engine |
+| 🚨 **Fraud Alerts** | Admin dashboard for reviewing flagged transactions |
+
+---
+
+## Tech Stack
+
+| Layer | Technology | Purpose |
 |:---|:---|:---|
-| **Singleton** | `DatabaseConnection` | Manages a single, efficient MongoDB connection pool. |
-| **Factory** | `AccountFactory` | Generates specialized account types (Savings/Checking) with custom rules. |
-| **Strategy** | `FraudDetectionEngine` | Swappable detection rules (HighValue, RapidTxn, NewRecipient). |
-| **Observer** | `TransactionEventEmitter` | Decouples fraud analysis from alert logging and notifications. |
-| **Command** | `TransferCommand` | Encapsulates money movement as reversible objects for audit integrity. |
-
-<details>
-<summary><b>🔍 View OOP & SOLID Implementation</b></summary>
-
-#### OOP Concepts
-- **Encapsulation**: Strict service-layer boundaries and private data handling.
-- **Abstraction**: Interface-driven design for fraud rules and banking services.
-- **Inheritance**: Specialized account models extending a core banking template.
-- **Polymorphism**: Uniform execution of diverse fraud strategies.
-
-#### SOLID Principles
-- **S**: Each service (Auth, Loan, Account) has a single, well-defined responsibility.
-- **O**: Fraud engine is open for new rules but closed for core logic modification.
-- **L**: Account subtypes are perfectly interchangeable in transaction logic.
-- **I**: Focused, lean interfaces (IUser, IAccount, ITransaction).
-- **D**: High-level controllers depend on service abstractions, not low-level models.
-</details>
+| **Frontend** | React.js + Tailwind CSS | User interface & styling |
+| **Backend** | Node.js + Express.js | REST API server |
+| **Language** | TypeScript | Type safety across stack |
+| **Database** | MongoDB + Mongoose | Data storage & ODM |
+| **Authentication** | JWT + bcrypt | Secure auth & password hashing |
+| **Build Tool** | Vite | Fast frontend development |
 
 ---
 
-## 🏗️ System Architecture
-
-```mermaid
-graph TD
-    A[Presentation Layer: React + Tailwind] -->|REST API| B[Business Layer: Express + TS]
-    B --> C{Design Patterns}
-    C --> D[Singleton: DB Connection]
-    C --> E[Factory: Accounts]
-    C --> F[Strategy: Fraud Engine]
-    C --> G[Command: Transactions]
-    B --> H[Data Access Layer: MongoDB Atlas]
-```
-
----
-
-## 📂 Project Structure
+## System Architecture
 
 ```text
-PayShield/
-├── src/
-│   ├── server/               # Node.js + Express (TypeScript)
-│   │   ├── patterns/         # 🔒 Singleton, 🏭 Factory, 📦 Command, 👀 Observer
-│   │   ├── fraud/            # 🎯 Strategy-based Detection Engine
-│   │   ├── services/         # Core Business Logic
-│   │   └── models/           # Mongoose Data Schemas
-│   └── client/               # React (Vite) + Vanilla CSS
-├── diagrams/                 # Architecture, ER, and Sequence UMLs
-└── docs/                     # Technical Documentation & SDLC
+┌──────────────────────────────────────────────┐
+│              PRESENTATION LAYER              │
+│         (React.js + Tailwind CSS)            │
+│    Login │ Dashboard │ Transfers │ Loans     │
+└──────────────────┬───────────────────────────┘
+                   │ HTTP/REST (JSON)
+┌──────────────────▼───────────────────────────┐
+│             BUSINESS LOGIC LAYER             │
+│          (Express.js + TypeScript)           │
+│  Controllers → Services → Design Patterns   │
+│  Auth │ Accounts │ Transactions │ Fraud      │
+└──────────────────┬───────────────────────────┘
+                   │ Mongoose ODM
+┌──────────────────▼───────────────────────────┐
+│               DATA ACCESS LAYER              │
+│               (MongoDB Atlas)                │
+│   Users │ Accounts │ Transactions │ Loans    │
+└──────────────────────────────────────────────┘
+```
+
+For detailed diagrams, see:
+- [Architecture Diagram](./diagrams/architecture-diagram.md)
+- [Sequence Diagrams](./diagrams/sequence-diagrams.md)
+
+---
+
+## Design Patterns
+
+PayShield implements **5 Gang of Four (GoF) design patterns**:
+
+### 1. 🔒 Singleton Pattern (Creational)
+**Used in:** `DatabaseConnection` — ensures a single MongoDB connection instance.
+
+### 2. 🏭 Factory Pattern (Creational)
+**Used in:** `AccountFactory` — creates Savings or Checking accounts with different configurations.
+
+### 3. 🎯 Strategy Pattern (Behavioral)
+**Used in:** Fraud Detection — interchangeable fraud detection rules.
+
+### 4. 👀 Observer Pattern (Behavioral)
+**Used in:** Transaction events — observers are notified when fraud is detected.
+
+### 5. 📦 Command Pattern (Behavioral)
+**Used in:** Banking transactions — encapsulated as command objects with `execute()` and `undo()`.
+
+📖 **Full documentation:** [Design Patterns Documentation](./docs/design-patterns.md)
+
+---
+
+## ER Diagram
+
+```mermaid
+erDiagram
+    USER ||--o{ ACCOUNT : "owns"
+    USER ||--o{ LOAN : "applies for"
+    USER ||--o{ FRAUD_ALERT : "receives"
+    ACCOUNT ||--o{ TRANSACTION : "sends from"
+    ACCOUNT ||--o{ TRANSACTION : "receives to"
+    TRANSACTION ||--o| FRAUD_ALERT : "may trigger"
+
+    USER {
+        ObjectId _id PK
+        string name
+        string email UK
+        string password
+        string role
+    }
+
+    ACCOUNT {
+        ObjectId _id PK
+        string accountNumber UK
+        ObjectId userId FK
+        string type
+        float balance
+        string status
+    }
+
+    TRANSACTION {
+        ObjectId _id PK
+        ObjectId fromAccount FK
+        ObjectId toAccount FK
+        float amount
+        string type
+        boolean flagged
+    }
+
+    LOAN {
+        ObjectId _id PK
+        ObjectId userId FK
+        float amount
+        string purpose
+        string status
+        float interestRate
+    }
+
+    FRAUD_ALERT {
+        ObjectId _id PK
+        ObjectId transactionId FK
+        string ruleTriggered
+        string severity
+    }
+```
+
+📖 **Full ER diagram:** [ER Diagram Documentation](./diagrams/er-diagram.md)
+
+---
+
+## OOP & SOLID Principles
+
+### OOP Concepts Used
+| Concept | Where Applied |
+|:---|:---|
+| **Encapsulation** | Password hashing hidden inside User model; balance only modified via service methods |
+| **Abstraction** | Service layer hides database queries from controllers |
+| **Inheritance** | SavingsAccount and CheckingAccount extend base Account |
+| **Polymorphism** | Multiple fraud strategies implement IFraudStrategy interface |
+
+### SOLID Principles
+| Principle | Application |
+|:---|:---|
+| **S** — Single Responsibility | Each service handles one domain (Auth, Account, Transaction, Loan) |
+| **O** — Open/Closed | Fraud engine extensible via new strategies without modification |
+| **L** — Liskov Substitution | Account subtypes are interchangeable |
+| **I** — Interface Segregation | Small, focused interfaces (IUser, IAccount, ITransaction) |
+| **D** — Dependency Inversion | Controllers depend on service abstractions |
+
+📖 **Full documentation:** [OOP Concepts](./docs/oop-concepts.md) | [SOLID Principles](./docs/solid-principles.md)
+
+---
+
+## Folder Structure
+
+```text
+PayShield-Digital-Banking-System/
+├── docs/                              # Documentation
+├── diagrams/                          # Architecture & ER diagrams
+├── db/                                # Database scripts
+└── src/
+    └── server/                        # Backend (Express + TypeScript)
+        ├── config/                    # Singleton DB connection
+        ├── interfaces/                # TypeScript interfaces
+        ├── models/                    # Mongoose models
+        ├── services/                  # Business logic
+        ├── controllers/               # HTTP handlers
+        ├── routes/                    # API routes
+        ├── middleware/                # JWT middleware
+        ├── patterns/                  # Design Patterns (Creational & Behavioral)
+        └── fraud/                     # Fraud Detection Engine
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 📋 Prerequisites
-- Node.js v18+
-- MongoDB Atlas account (or local MongoDB)
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (local or Atlas)
 
-### ⚙️ Installation
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/Dhanvin1520/PayShield-Digital-Banking-System.git
+cd PayShield-Digital-Banking-System
 
-1. **Clone & Install**
-   ```bash
-   git clone https://github.com/Dhanvin1520/PayShield-Digital-Banking-System.git
-   cd PayShield-Digital-Banking-System
-   npm install && cd src/server && npm install
-   ```
+# Install backend dependencies
+cd src/server
+npm install
 
-2. **Environment Setup**
-   Create a `.env` in `src/server/`:
-   ```env
-   PORT=5001
-   MONGO_URI=your_mongodb_uri
-   JWT_SECRET=your_secret
-   ```
-
-3. **Launch**
-   ```bash
-   npm run dev  # Starts both frontend and backend
-   ```
+# Start the development server
+npm run dev
+```
 
 ---
 
-## 🔑 Demo Access
+## API Endpoints
 
-| Role | Email | Password |
-|:---|:---|:---|
-| **Administrator** | `dhanvin@payshield.com` | `password123` |
-| **Standard User** | `dhanvin@gmail.com` | `password123` |
+| Method | Endpoint | Description | Auth |
+|:---|:---|:---|:---|
+| POST | `/api/auth/register` | Register new user | ❌ |
+| POST | `/api/auth/login` | Login and get JWT | ❌ |
+| GET | `/api/auth/me` | Get current user profile | ✅ |
+| POST | `/api/accounts` | Create new account | ✅ |
+| GET | `/api/accounts` | Get user's accounts | ✅ |
+| POST | `/api/transactions/transfer` | Transfer funds | ✅ |
+| GET | `/api/transactions/flagged` | Flagged transactions | 🔑 Admin |
+| PATCH | `/api/loans/:id/status` | Update loan status | 🔑 Admin |
 
 ---
 
-## 👥 The Team
+## 👥 Team Members
 
-| Member | Role | Focus |
+| Name | ID | Role |
 |:---|:---|:---|
-| **Dhanvin Vadlamudi** | Team Lead | Auth & Core Architecture |
-| **Nipun Patlori** | Backend Developer | Banking Services & Patterns |
-| **Tejaswini Palwai** | Security Engineer | Fraud Engine & Strategy Logic |
-| **Meka Chaitanya Sai** | Fullstack Engineer | UI/UX & Routing Infrastructure |
-| **Killi Akshith Kumar** | System Architect | Diagrams & Documentation |
+| **Dhanvin Vadlamudi** | 2401010150 | Team Lead (Auth, Core Setup, Singleton) |
+| **Nipun Patlori** | 2401010323 | Backend (Accounts, Transactions, Factory, Command) |
+| **Tejaswini Palwai** | 2401010314 | Backend (Fraud Engine, Strategy, Observer) |
+| **Meka Chaitanya Sai** | 2401010275 | Structure (Routing, Middleware, Layout) |
+| **Killi Akshith Kumar** | 2401010230 | Documentation (Diagrams, Database, README) |
 
 ---
 
 <div align="center">
-
-**Developed for the SDSE Capstone Project @ Rishihood University**  
-🛡️ *Secure. Smart. Reliable.*
-
+  <strong>🛡️ PayShield — Secure. Smart. Reliable.</strong>
 </div>
