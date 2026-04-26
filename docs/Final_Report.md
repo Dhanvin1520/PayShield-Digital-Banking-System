@@ -61,3 +61,4 @@ The project follows a **Layered Architecture**:
 1. **Presentation**: React.js with Tailwind CSS for a premium, responsive UI.
 2. **Business**: Node.js/Express service layer implementing Design Patterns.
 3. **Data**: MongoDB Atlas for flexible, document-based financial records.
+

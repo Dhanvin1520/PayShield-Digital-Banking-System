@@ -38,9 +38,9 @@ class AccountFactory {
          accountNumber,
          userId: new mongoose.Types.ObjectId(userId),
          type: AccountType.SAVINGS,
-         balance: 10000,
+         balance: 0,
          status: AccountStatus.ACTIVE,
-         interestRate: 0.04,
+         interestRate: 0.04, 
          overdraftLimit: null,
       });
 
@@ -58,10 +58,10 @@ class AccountFactory {
          accountNumber,
          userId: new mongoose.Types.ObjectId(userId),
          type: AccountType.CHECKING,
-         balance: 10000,
+         balance: 0,
          status: AccountStatus.ACTIVE,
          interestRate: null,
-         overdraftLimit: 5000,
+         overdraftLimit: 5000, 
       });
 
       await account.save();

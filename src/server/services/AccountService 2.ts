@@ -9,7 +9,7 @@ class AccountService {
     return AccountFactory.createAccount(type, userId);
   }
 
-
+  
   async getAccountsByUserId(userId: string): Promise<IAccount[]> {
     return Account.find({ userId }).sort({ createdAt: -1 });
   }
@@ -18,7 +18,7 @@ class AccountService {
     return Account.findById(accountId);
   }
 
-
+  
   async getAccountByNumber(accountNumber: string): Promise<IAccount | null> {
     return Account.findOne({ accountNumber });
   }
@@ -27,17 +27,6 @@ class AccountService {
   async getTotalBalance(userId: string): Promise<number> {
     const accounts = await Account.find({ userId, status: 'active' });
     return accounts.reduce((total, account) => total + account.balance, 0);
-  }
-
-  async getAllAccounts(): Promise<IAccount[]> {
-    return Account.find({}).sort({ createdAt: -1 }).populate('userId', 'name email');
-  }
-
-  async getBeneficiaries(currentUserId: string): Promise<IAccount[]> {
-    // Return one account per user (excluding the current user) to act as a contact list
-    return Account.find({ userId: { $ne: currentUserId } })
-      .populate('userId', 'name email')
-      .sort({ 'userId.name': 1 });
   }
 }
 

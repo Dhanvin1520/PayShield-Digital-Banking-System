@@ -102,6 +102,19 @@ class LoanController {
       next(error);
     }
   };
+
+  getAllLoans = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const loans = await this.loanService.getAllLoans();
+      res.status(200).json({
+        success: true,
+        data: { loans, count: loans.length },
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default new LoanController();
+

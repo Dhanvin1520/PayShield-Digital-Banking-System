@@ -6,6 +6,7 @@ const AccountSchema: Schema = new Schema(
   {
     accountNumber: {
       type: String,
+      required: true,
       unique: true,
     },
     userId: {
@@ -20,7 +21,7 @@ const AccountSchema: Schema = new Schema(
     },
     balance: {
       type: Number,
-      default: 10000,
+      default: 0,
       min: [0, 'Balance cannot be negative'],
     },
     status: {

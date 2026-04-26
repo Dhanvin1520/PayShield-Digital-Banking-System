@@ -1,6 +1,7 @@
 import Loan from '../models/Loan';
 import { ILoan, ILoanApplicationInput, LoanStatus } from '../interfaces/ILoan';
 
+// LoanService
 class LoanService {
   async applyForLoan(userId: string, input: ILoanApplicationInput): Promise<ILoan> {
     const interestRate = 10.0;
@@ -36,6 +37,11 @@ class LoanService {
 
     return await Loan.findByIdAndUpdate(loanId, updateData, { new: true });
   }
+
+  async getAllLoans(): Promise<ILoan[]> {
+    return await Loan.find({}).sort({ appliedAt: -1 }).populate('userId', 'name email');
+  }
 }
 
 export default LoanService;
+
