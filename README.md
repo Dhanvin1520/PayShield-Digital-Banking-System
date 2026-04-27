@@ -23,9 +23,6 @@ A full-stack digital banking application with real-time fraud detection
 
 ### 📄 Project Reports
 - Final Project Report (PDF): [Download Report](./docs/Final_Report.pdf)
-- Technical Report (LaTeX): [View LaTeX](./docs/Final_Report.tex)
-- Technical Report (Markdown): [View Markdown](./docs/Final_Report.md)
-- System Design Document (PDF): [View SD](./docs/sd.pdf)
 
 ---
 
