@@ -1,64 +1,110 @@
-# 🛡️ PayShield — Final Project Report
-
-## 1. Team Details
-
-| Name | ID | Role | Responsibility |
-|------|----|------|----------------|
-| **Dhanvin Vadlamudi** | 2401010150 | **Team Lead** | Authentication, Core Setup, Singleton Pattern |
-| **Nipun Patlori** | 2401010323 | Accounts, Transactions, Factory, Command Patterns |
-| **Tejaswini Palwai** | 2401010314 | Fraud Detection Engine, Strategy, Observer Patterns |
-| **Meka Chaitanya Sai** | 2401010275 | Project Structure, Setup, API Routing |
-| **Killi Akshith Kumar** | 2401010230 | System Design, Diagrams, Database Seeding, Documentation |
+# 🛡️ PayShield: Digital Banking System with Fraud Detection
+## Final Capstone Project Report
 
 ---
 
-
-
-## 2. Project Explanation
-
-**PayShield** is a comprehensive digital banking ecosystem designed with a "security-first" mindset. Unlike traditional banking demos, PayShield integrates a **real-time Fraud Detection Engine** that monitors every transaction as it happens.
-
-### Core Value Proposition:
-- **Financial Security**: Rule-based engine flags high-value transfers, rapid-fire transactions, and unknown recipients.
-- **Robustness**: Built using a strictly typed TypeScript architecture to prevent runtime errors in financial calculations.
-- **Scalability**: Uses industry-standard design patterns (Singleton, Factory, Strategy) allowing for easy addition of new banking products or fraud rules.
+## 1. Executive Summary
+**PayShield** is a comprehensive, production-grade digital banking ecosystem designed to address the critical need for security and architectural integrity in financial software. Built using the **MERN stack (MongoDB, Express, React, Node.js)** with **TypeScript**, the system demonstrates the application of advanced Software Engineering principles, including **Gang of Four (GoF) Design Patterns**, **SOLID principles**, and **Layered Architecture**. The centerpiece of the project is a real-time **Fraud Detection Engine** that utilizes the Strategy and Observer patterns to identify and flag suspicious transactions instantly.
 
 ---
 
-## 3. OOP Application & Improvements
+## 2. Project Team & Roles
 
-PayShield demonstrates deep integration of **Object-Oriented Programming (OOP)** concepts, which significantly improved codebase maintainability:
-
-### How OOPS Improved the Project:
-1. **Encapsulation**: Using private fields and service-layer abstractions prevents direct manipulation of account balances, ensuring that only validated "Commands" can modify the state.
-2. **Abstraction**: The use of interfaces for Fraud Strategies (`IFraudStrategy`) allows the system to analyze transactions without knowing the specific logic of each rule.
-3. **Inheritance**: Base `Account` models are extended into `SavingsAccount` and `CheckingAccount`, allowing shared logic (like `accountNumber` generation) to stay DRY (Don't Repeat Yourself).
-4. **Polymorphism**: The `TransactionService` can trigger various fraud rules polymorphically. Whether it's checking for a "High Value" or "Rapid Transaction," the service calls a uniform `analyze()` method.
-
----
-
-## 4. SOLID Principles
-
-The system was architected following SOLID principles to ensure it remains agile and testable:
-
-- **S — Single Responsibility**: Every class has one job. The `AuthService` handles identity, while `TransactionService` handles money movement.
-- **O — Open/Closed**: The Fraud Engine is **open** for extension (we can add new rules) but **closed** for modification. Adding a `CryptoCheckRule` doesn't require changing the core engine code.
-- **L — Liskov Substitution**: Any account type (Savings/Checking) can be passed to the transaction logic without breaking it.
-- **I — Interface Segregation**: We use focused interfaces like `ITransaction` and `IUser` rather than one giant "ProjectInterface."
-- **D — Dependency Inversion**: Controllers depend on high-level Service abstractions rather than low-level database models.
+| Name | ID | Primary Responsibility |
+|:---|:---|:---|
+| **Dhanvin Vadlamudi** | 2401010150 | **Team Lead**: Auth System, Core Architecture, Deployment |
+| **Nipun Patlori** | 2401010323 | **Backend**: Account Management, Command Pattern, Factory Pattern |
+| **Tejaswini Palwai** | 2401010314 | **Security**: Fraud Engine Development, Strategy & Observer Patterns |
+| **Meka Chaitanya Sai** | 2401010275 | **Fullstack**: UI/UX Development, API Routing, Middleware |
+| **Killi Akshith Kumar** | 2401010230 | **Architect**: System Design, UML Documentation, Database Design |
 
 ---
 
-## 5. Project Details
+## 3. System Requirements & Use Case Analysis
 
-### Technical Highlights:
-- **Singleton Database**: Ensures only one active connection to MongoDB Atlas, optimized for connection pooling.
-- **Command Pattern for Transactions**: Every transfer is encapsulated as a `Command` object, allowing for potential implementation of `undo()` (reversal) operations.
-- **Strategy-Based Fraud Detection**: Different rules can be toggled or weighted differently based on the bank's risk appetite.
+PayShield supports two primary actors: **Customers** and **System Administrators**.
 
-### System Architecture:
-The project follows a **Layered Architecture**:
-1. **Presentation**: React.js with Tailwind CSS for a premium, responsive UI.
-2. **Business**: Node.js/Express service layer implementing Design Patterns.
-3. **Data**: MongoDB Atlas for flexible, document-based financial records.
+### 👤 Customer Use Cases:
+- **Identity Management**: Secure registration and multi-factor-like login using JWT.
+- **Account Orchestration**: Creation and management of specialized Savings and Checking accounts.
+- **Fund Movement**: Peer-to-peer transfers with real-time balance integrity.
+- **Credit Services**: Submission of loan applications (Home, Personal, Education) with automated EMI calculations.
+- **Financial Audit**: Access to detailed, searchable transaction histories.
 
+### 🔑 Administrator Use Cases:
+- **Fraud Oversight**: Reviewing real-time alerts generated by the Fraud Detection Engine.
+- **Loan Management**: Multi-state loan processing (Review, Approve, Reject).
+- **System Monitoring**: Comprehensive view of all system accounts and liquidity.
+
+---
+
+## 4. Technical Architecture
+
+The system utilizes a **3-Tier Layered Architecture** to ensure loose coupling and high maintainability:
+
+1.  **Presentation Layer (React.js + Tailwind CSS)**: A premium, responsive interface that communicates with the backend via RESTful APIs.
+2.  **Business Logic Layer (Node.js + Express + TypeScript)**: The "Brain" of the system where all banking rules and design patterns are implemented.
+3.  **Data Access Layer (MongoDB Atlas)**: A scalable, document-based cloud database for persistent financial records.
+
+---
+
+## 5. Software Engineering: Design Patterns
+
+PayShield serves as a practical implementation of five key GoF Design Patterns:
+
+### 🏭 Factory Pattern (Creational)
+- **Implementation**: `AccountFactory.ts`
+- **Purpose**: Dynamically creates Savings or Checking accounts. It encapsulates the complex initialization logic (interest rates, overdraft limits) away from the user-facing controller.
+
+### 🔒 Singleton Pattern (Creational)
+- **Implementation**: `DatabaseConnection.ts`
+- **Purpose**: Guarantees that only one active connection to the MongoDB cluster exists, optimizing resource usage and preventing connection leaks.
+
+### 🎯 Strategy Pattern (Behavioral)
+- **Implementation**: `IFraudStrategy` & `FraudDetectionEngine.ts`
+- **Purpose**: Defines a family of fraud detection algorithms (HighValue, RapidTxn, NewRecipient) and makes them interchangeable. This allows for adding new security rules without changing the core engine.
+
+### 👀 Observer Pattern (Behavioral)
+- **Implementation**: `EventEmitter.ts` & `FraudAlertObserver.ts`
+- **Purpose**: Creates a one-to-many dependency between the Fraud Engine and the Alert System. When fraud is detected, all registered observers (Loggers, DB, Notification services) are notified automatically.
+
+### 📦 Command Pattern (Behavioral)
+- **Implementation**: `TransferCommand.ts`
+- **Purpose**: Encapsulates a fund transfer as a standalone object. This provides a clear audit trail and allows for advanced features like transaction reversal (Undo).
+
+---
+
+## 6. OOP & SOLID Implementation
+
+### Object-Oriented Principles:
+- **Encapsulation**: Using private fields and service-layer abstraction to protect sensitive balance logic.
+- **Abstraction**: Hiding complex Mongoose queries behind simple service methods.
+- **Polymorphism**: Treating all fraud rules as a generic `IFraudStrategy`.
+
+### SOLID Principles:
+- **Single Responsibility**: Each service (Auth, Loan, Account) manages exactly one domain.
+- **Open/Closed**: The system is open for new fraud strategies but closed for modification of the engine core.
+- **Dependency Inversion**: High-level controllers depend on Service abstractions, not low-level database models.
+
+---
+
+## 7. Database Design (ER Summary)
+
+The database is designed with optimized referencing to maintain speed while ensuring data integrity:
+- **User (1:N) Account**: One user can manage multiple specialized accounts.
+- **Account (1:N) Transaction**: Every account maintains a history of its specific money movements.
+- **Transaction (1:0..1) FraudAlert**: Suspicious transactions generate unique alert records for admin review.
+
+---
+
+## 8. Conclusion & Future Scope
+
+PayShield successfully demonstrates that modern web technologies combined with classical software design patterns can produce a robust, secure, and scalable financial application.
+
+**Future Enhancements:**
+- Integration of Machine Learning (ML) models for predictive fraud analysis.
+- Implementation of a global "Transaction Undo" feature using the Command history.
+- Addition of multi-currency support and real-time exchange rate APIs.
+
+---
+**🛡️ PayShield — Secure. Smart. Reliable.**
