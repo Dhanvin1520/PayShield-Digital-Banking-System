@@ -4,7 +4,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[margin=1in]{geometry}
-\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{array}
@@ -13,138 +12,197 @@
 \usepackage{titlesec}
 \usepackage{listings}
 \usepackage{enumitem}
+\usepackage{fancyhdr}
 
 % --- Custom Colors & Styling ---
-\definecolor{primary}{HTML}{1E40AF}
-\definecolor{secondary}{HTML}{1E293B}
-\definecolor{accent}{HTML}{3B82F6}
+\definecolor{primary}{HTML}{0F172A}    % Deep Slate
+\definecolor{secondary}{HTML}{334155}  % Slate
+\definecolor{accent}{HTML}{2563EB}     % Blue-600
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=primary,
+    linkcolor=accent,
     filecolor=magenta,      
     urlcolor=accent,
-    pdftitle={PayShield Final Report},
+    pdftitle={PayShield: Advanced System Design Report},
 }
 
-\titleformat{\section}{\large\bfseries\color{primary}}{\thesection}{1em}{}[\titlerule]
-\titleformat{\subsection}{\normalsize\bfseries\color{secondary}}{\thesubsection}{1em}{}
+% --- Header/Footer Styling ---
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\color{secondary}PayShield Final Report}
+\lhead{\color{secondary}System Design \& Software Engineering}
+\rfoot{\thepage}
+
+% --- Section Styling ---
+\titleformat{\section}{\Large\bfseries\color{primary}}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{secondary}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{accent}}{\thesubsubsection}{1em}{}
 
 % --- Code Snippet Styling ---
 \lstset{
     basicstyle=\ttfamily\small,
     breaklines=true,
     commentstyle=\color{gray},
-    keywordstyle=\color{primary},
+    keywordstyle=\color{accent},
     stringstyle=\color{green!50!black},
-    frame=single,
-    rulecolor=\color{gray!30},
+    frame=none,
     backgroundcolor=\color{gray!5},
 }
 
-% --- Title Page Info ---
-\title{
-    \vspace{2cm}
-    \includegraphics[width=4cm]{../src/client/public/shield-logo.png} \\ [1cm]
-    \Huge \textbf{PayShield} \\
-    \Large \textit{Advanced Digital Banking \& Fraud Detection System} \\ [1cm]
-    \large \textbf{SDSE Capstone Project Report} \\
-    \vspace{1cm}
-}
-\author{
-    \textbf{Team Members:} \\
-    Dhanvin Vadlamudi (2401010150) \\
-    Nipun Patlori (2401010323) \\
-    Tejaswini Palwai (2401010314) \\
-    Meka Chaitanya Sai (2401010275) \\
-    Killi Akshith Kumar (2401010230) \\ [1cm]
-    \textbf{Faculty Mentor:} [Mentor Name]
-}
-\date{\today}
-
+% --- Title Page ---
 \begin{document}
 
-\maketitle
-\newpage
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\Huge \textbf{🛡️ PayShield} \par}
+    \vspace{0.5cm}
+    {\Large \textbf{Advanced Digital Banking System with Integrated Fraud Detection} \par}
+    \vspace{1.5cm}
+    {\large \textbf{System Design \& Software Engineering Capstone Report} \par}
+    \vfill
+    \begin{tcolorbox}[colback=gray!5,colframe=primary,arc=0mm,title=Team Composition]
+        \centering
+        \begin{tabular}{l l l}
+            \textbf{Dhanvin Vadlamudi} & 2401010150 & \textit{Team Lead \& Architect} \\
+            \textbf{Nipun Patlori} & 2401010323 & \textit{Backend \& Transaction Logic} \\
+            \textbf{Tejaswini Palwai} & 2401010314 & \textit{Security \& Fraud Detection} \\
+            \textbf{Meka Chaitanya Sai} & 2401010275 & \textit{Fullstack \& API Infrastructure} \\
+            \textbf{Killi Akshith Kumar} & 2401010230 & \textit{Documentation \& Data Modeling} \\
+        \end{tabular}
+    \end{tcolorbox}
+    \vfill
+    \large \today \par
+    \vspace{1cm}
+    \textbf{Department of Software Engineering} \\
+    Rishihood University
+\end{titlepage}
 
+\newpage
 \tableofcontents
 \newpage
 
-% --- 1. Executive Summary ---
-\section{Executive Summary}
-\begin{tcolorbox}[colback=primary!5,colframe=primary,title=Abstract]
-PayShield is a production-grade digital banking ecosystem designed to showcase the integration of advanced software engineering principles with modern web technologies. Built using the MERN stack with TypeScript, the platform features a real-time Fraud Detection Engine powered by GoF Design Patterns. This report details the architectural decisions, design patterns, and system requirements that define PayShield as a secure and scalable financial solution.
-\end{tcolorbox}
+% --- Section 1: Introduction ---
+\section{Introduction}
+PayShield is a sophisticated digital banking ecosystem developed to demonstrate the synergy between classical Software Engineering principles and modern web scale-out architectures. Unlike conventional banking prototypes, PayShield is engineered around a "Security-First" paradigm, integrating a real-time Fraud Detection Engine directly into the transaction lifecycle.
 
-% --- 2. Project Overview ---
-\section{Project Overview}
-The primary objective of PayShield is to bridge the gap between simple CRUD applications and enterprise-grade financial systems. By implementing a rule-based fraud detection pipeline, the system ensures that every fund transfer is scrutinized before execution, significantly reducing the risk of malicious activity.
+The system addresses the critical problem of transactional security in the NoSQL era, proving that data integrity and complex business rules can be maintained without compromising the horizontal scalability provided by MongoDB.
 
-% --- 3. Requirements & Use Cases ---
-\section{System Requirements \& Use Case Analysis}
-The system serves two distinct user roles with specific functionalities.
+% --- Section 2: System Architecture ---
+\section{System Architecture \& Design}
+The system adheres to a strict **3-Tier Layered Architecture**, ensuring high modularity and loose coupling between components.
 
-\subsection{Customer Use Cases}
-\begin{itemize}[label=\checkmark]
-    \item \textbf{Identity Management:} Secure registration and authentication using JWT-based session management.
-    \item \textbf{Account Orchestration:} Opening specialized Savings and Checking accounts with automated logic.
-    \item \textbf{Fund Movement:} Real-time peer-to-peer transfers with balance integrity checks.
-    \item \textbf{Credit Services:} Application for loans with automated EMI calculation and status tracking.
-\end{itemize}
+\subsection{Presentation Layer (Frontend)}
+Developed using **React.js** and **TypeScript**, the frontend utilizes a custom CSS design system rather than generic utility frameworks. This ensures a unique, high-premium aesthetic tailored for financial transparency. State management is handled through React Context (AuthContext), ensuring secure JWT propagation across the application.
 
-\subsection{Administrator Use Cases}
-\begin{itemize}[label=\checkmark]
-    \item \textbf{Fraud Oversight:} Monitoring and investigating transactions flagged by the Strategy-based engine.
-    \item \textbf{Loan Lifecycle Management:} Reviewing, approving, and rejecting customer loan applications.
-    \item \textbf{System Audit:} Access to global account data and system liquidity metrics.
-\end{itemize}
+\subsection{Business Logic Layer (Backend)}
+The core intelligence resides in the **Node.js/Express** server. This layer is entirely decoupled from both the UI and the Database, communicating via standardized RESTful endpoints. It implements the primary business rules including interest calculation, overdraft protection, and the fraud detection pipeline.
 
-% --- 4. Technical Architecture ---
-\section{Technical Architecture}
-The system follows a strict \textbf{3-Tier Layered Architecture}:
-\begin{enumerate}
-    \item \textbf{Presentation Layer:} React.js + Tailwind CSS providing a premium, responsive UI.
-    \item \textbf{Business Logic Layer:} Node.js + Express + TypeScript implementing core banking services and design patterns.
-    \item \textbf{Data Access Layer:} MongoDB Atlas providing a flexible, document-based cloud storage solution.
-\end{enumerate}
+\subsection{Data Access Layer (Database)}
+**MongoDB Atlas** provides the persistence layer. By utilizing a document-based model, PayShield handles the polymorphic nature of banking products (e.g., Savings vs. Checking accounts) without the rigid schema constraints of traditional SQL, while maintaining relationship integrity through ObjectId referencing.
 
-% --- 5. Design Pattern Implementation ---
-\section{Design Pattern Implementation}
-The core strength of PayShield lies in its utilization of five Gang of Four (GoF) Design Patterns.
+---
 
-\subsection{Creational Patterns}
+% --- Section 3: Design Pattern Implementation ---
+\section{Advanced Design Patterns (GoF)}
+PayShield implements five distinct Gang of Four (GoF) design patterns to ensure the codebase remains "Enterprise-Ready."
+
+\subsection{Singleton Pattern (Creational)}
+\textbf{File:} \texttt{src/server/config/database.ts} \\
+The \texttt{DatabaseConnection} class ensures that only a single instance of the MongoDB client is instantiated. This prevents "Connection Pool Exhaustion" and ensures that the application maintains a stable heartbeat with the cloud cluster.
+
+\subsection{Factory Pattern (Creational)}
+\textbf{File:} \texttt{src/server/patterns/factory/AccountFactory.ts} \\
+To handle the creation of diverse financial products, we implemented an \texttt{AccountFactory}. This abstracts the instantiation logic for \texttt{SavingsAccount} and \texttt{CheckingAccount}, allowing the system to scale to new account types (e.g., Business, Crypto) without modifying the creation logic in the controllers.
+
+\subsection{Strategy Pattern (Behavioral)}
+\textbf{File:} \texttt{src/server/fraud/FraudDetectionEngine.ts} \\
+The fraud detection engine utilizes the Strategy pattern to make rules interchangeable. Each rule (High Value, Rapid Transaction, New Recipient) implements the \texttt{IFraudStrategy} interface. This enables the system to run multiple security audits polymorphically on every transaction.
+
+\subsection{Observer Pattern (Behavioral)}
+\textbf{File:} \texttt{src/server/patterns/observer/EventEmitter.ts} \\
+When a transaction is flagged, the system uses an event-driven approach. The \texttt{FraudDetectionEngine} acts as a "Subject," emitting an event that the \texttt{FraudAlertObserver} listens for. This decouples the security analysis from the alert logging and reporting logic.
+
+\subsection{Command Pattern (Behavioral)}
+\textbf{File:} \texttt{src/server/patterns/command/TransferCommand.ts} \\
+Every fund transfer is encapsulated as a \texttt{Command} object. This treats transactions as first-class citizens, providing an immutable history and enabling the future implementation of complex "Undo" (Reversal) operations with high data integrity.
+
+---
+
+% --- Section 4: Software Engineering Principles ---
+\section{SOLID \& OOP Integration}
+
+\subsection{The SOLID Paradigm}
 \begin{description}
-    \item[Singleton Pattern:] Implemented in \texttt{DatabaseConnection.ts} to ensure a single, efficient MongoDB connection pool across the application lifecycle.
-    \item[Factory Pattern:] Utilized in \texttt{AccountFactory.ts} to abstract the creation of diverse account types (Savings/Checking) with their respective interest and overdraft rules.
+    \item[S - Single Responsibility:] Every class and service (e.g., \texttt{AuthService}, \texttt{LoanService}) has a single, well-defined reason to change.
+    \item[O - Open/Closed:] The Fraud Engine is open for new detection strategies but closed for modification of the orchestration engine.
+    \item[L - Liskov Substitution:] Specialized accounts can be substituted for base accounts in the transaction logic without breaking system invariants.
+    \item[I - Interface Segregation:] We utilize lean, focused interfaces like \texttt{IUser} and \texttt{IAccount} rather than monolithic "fat" interfaces.
+    \item[D - Dependency Inversion:] Controllers depend on high-level Service abstractions rather than low-level database implementation details.
 \end{description}
 
-\subsection{Behavioral Patterns}
-\begin{description}
-    \item[Strategy Pattern:] The foundation of the Fraud Engine. Different detection rules (HighValue, RapidTxn, etc.) are implemented as interchangeable strategies.
-    \item[Observer Pattern:] Decouples the Fraud Engine from the Alert system. When fraud is detected, an event is emitted, and the alert observer handles the DB persistence.
-    \item[Command Pattern:] Encapsulates fund transfers as objects, enabling transaction history logging and potential multi-step rollbacks.
-\end{description}
+\subsection{Object-Oriented Excellence}
+PayShield leverages **Inheritance** for hierarchical account modeling and **Encapsulation** to protect sensitive financial logic. **Abstraction** is utilized to hide the complexity of Mongoose aggregation pipelines behind simple, readable service methods.
 
-% --- 6. Software Engineering Principles ---
-\section{Software Engineering Principles}
-\subsection{SOLID Compliance}
+---
+
+% --- Section 5: Functional Requirements & Use Cases ---
+\section{Functional Requirements \& System Capabilities}
+
+\subsection{User Capability Modules}
 \begin{itemize}
-    \item \textbf{Single Responsibility:} Each service is dedicated to one domain (Auth, Account, Loan).
-    \item \textbf{Open/Closed:} The Fraud Engine is open for new strategies but closed for modification of core logic.
-    \item \textbf{Dependency Inversion:} Controllers depend on high-level Service abstractions rather than low-level Mongoose models.
+    \item \textbf{Identity \& Access:} Secure multi-tenant authentication using JWT and Bcrypt hashing.
+    \item \textbf{Product Management:} On-demand creation of Savings/Checking accounts with automated interest rates.
+    \item \textbf{Transaction Engine:} Real-time fund transfers with atomic-like balance updates.
+    \item \textbf{Credit Oversite:} Loan application submission with EMI projection and status tracking.
 \end{itemize}
 
-\subsection{OOP Integration}
-The codebase utilizes \textbf{Encapsulation} for data protection, \textbf{Inheritance} for account types, and \textbf{Polymorphism} for uniform rule execution across the fraud pipeline.
+\subsection{Administrative Oversight}
+\begin{itemize}
+    \item \textbf{Fraud Monitoring:} Real-time review of flagged transactions with severity scoring.
+    \item \textbf{Loan Processing:} Administrative control over credit approval/rejection workflows.
+    \item \textbf{Financial Audit:} Global oversight of system-wide liquidity and user accounts.
+\end{itemize}
 
-% --- 7. Conclusion ---
-\section{Conclusion}
-PayShield successfully demonstrates that modern web frameworks, when paired with classical design patterns, can produce a robust and secure banking environment. The project meets all functional requirements while maintaining a high level of architectural integrity, making it a viable template for larger-scale financial systems.
+---
+
+% --- Section 6: Database & Data Integrity ---
+\section{Data Modeling \& Persistence}
+The database utilizes a **Referential NoSQL** approach. 
+- **User Collection:** Stores hashed credentials and role-based metadata.
+- **Account Collection:** Links to User via \texttt{userId} reference, storing current balance and account type.
+- **Transaction Collection:** Stores immutable logs of money movement between account ObjectIds.
+- **FraudAlert Collection:** Links specific Transaction IDs to triggered security rules.
+
+---
+
+% --- Section 7: SDLC & Methodology ---
+\section{SDLC Methodology}
+PayShield was developed using the **Agile-Scrum** methodology. We utilized 6 rapid sprints:
+\begin{itemize}
+    \item \textbf{Sprint 1:} Requirements Analysis \& Data Modeling.
+    \item \textbf{Sprint 2:} Core Backend \& Authentication Infrastructure.
+    \item \textbf{Sprint 3:} Design Pattern Implementation (Creational & Behavioral).
+    \item \textbf{Sprint 4:} Frontend UI Development \& UX Prototyping.
+    \item \textbf{Sprint 5:} Fraud Detection Integration & Security Auditing.
+    \item \textbf{Sprint 6:} Final Optimization \& Multi-Platform Deployment.
+\end{itemize}
+
+---
+
+% --- Section 8: Conclusion ---
+\section{Conclusion \& Future Scope}
+PayShield demonstrates that modern web frameworks can achieve enterprise-grade stability when coupled with robust System Design patterns. By utilizing TypeScript for end-to-end type safety and GoF patterns for architectural flexibility, the system stands as a high-fidelity blueprint for secure digital banking.
+
+**Future Scope:** The modular architecture allows for seamless integration of AI-driven fraud prediction models and the expansion into multi-currency cross-border payment rails.
 
 \newpage
 \begin{center}
-    \Large \textbf{🛡️ PayShield — Secure. Smart. Reliable.} \\
-    \small Final Report - SDSE Capstone Project
+    \Huge \textbf{🛡️ PayShield} \\
+    \large \textit{Secure. Smart. Reliable.} \\
+    \vspace{0.5cm}
+    \small \color{secondary} End of Project Report - 2026
 \end{center}
 
 \end{document}
