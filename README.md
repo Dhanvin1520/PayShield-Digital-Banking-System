@@ -11,20 +11,21 @@
 ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-**A full-stack digital banking application with real-time fraud detection**
+A full-stack digital banking application with real-time fraud detection
 
 ---
 
 ### 🌐 Live Links
-- **Frontend (Vercel):** [https://pay-shield-digital-banking-system.vercel.app](https://pay-shield-digital-banking-system.vercel.app)
-- **Backend API (Render):** [https://payshield-digital-banking-system.onrender.com](https://payshield-digital-banking-system.onrender.com)
+- Frontend (Vercel): [https://pay-shield-digital-banking-system.vercel.app](https://pay-shield-digital-banking-system.vercel.app)
+- Backend API (Render): [https://payshield-digital-banking-system.onrender.com](https://payshield-digital-banking-system.onrender.com)
 
 ---
 
 ### 📄 Project Reports
-- **Final Report (PDF):** [Download Report](./docs/sd.pdf)
-- **Technical Report (LaTeX):** [View LaTeX](./docs/Final_Report.tex)
-- **Technical Report (Markdown):** [View Markdown](./docs/Final_Report.md)
+- Final Project Report (PDF): [Download Report](./docs/Final_Report.pdf)
+- Technical Report (LaTeX): [View LaTeX](./docs/Final_Report.tex)
+- Technical Report (Markdown): [View Markdown](./docs/Final_Report.md)
+- System Design Document (PDF): [View SD](./docs/sd.pdf)
 
 ---
 
@@ -51,13 +52,13 @@
 
 ## Overview
 
-PayShield is a full-stack digital banking application where users can create accounts, transfer funds, apply for loans, and view transaction statements. It features a **real-time fraud detection engine** that automatically flags suspicious transactions based on rule-based logic such as:
+PayShield is a full-stack digital banking application where users can create accounts, transfer funds, apply for loans, and view transaction statements. It features a real-time fraud detection engine that automatically flags suspicious transactions based on rule-based logic such as:
 
-- 🚨 **High-value transfers** (> ₹50,000)
-- ⚡ **Rapid successive transactions** (> 3 in 1 minute)
-- 👤 **Transfers to new/unknown recipients**
+- 🚨 High-value transfers (> ₹50,000)
+- ⚡ Rapid successive transactions (> 3 in 1 minute)
+- 👤 Transfers to new/unknown recipients
 
-Built using **React.js**, **Node.js**, **TypeScript**, **Express.js**, and **MongoDB** with **JWT authentication**, PayShield demonstrates core **System Design principles**, **OOP concepts**, **SOLID principles**, and **Design Patterns**.
+Built using React.js, Node.js, TypeScript, Express.js, and MongoDB with JWT authentication, PayShield demonstrates core System Design principles, OOP concepts, SOLID principles, and Design Patterns.
 
 ---
 
@@ -65,13 +66,13 @@ Built using **React.js**, **Node.js**, **TypeScript**, **Express.js**, and **Mon
 
 | Feature | Description |
 |:---|:---|
-| 🔐 **User Authentication** | Secure registration and login with JWT tokens and bcrypt password hashing |
-| 🏦 **Account Management** | Create Savings and Checking accounts with unique account numbers |
-| 💸 **Fund Transfers** | Transfer money between accounts with real-time balance updates |
-| 📊 **Transaction History** | View complete transaction statements with filtering |
-| 📋 **Loan Applications** | Apply for Personal, Home, Education, or Business loans with EMI calculation |
-| 🛡️ **Fraud Detection** | Automatic flagging of suspicious transactions using rule-based engine |
-| 🚨 **Fraud Alerts** | Admin dashboard for reviewing flagged transactions |
+| 🔐 User Authentication | Secure registration and login with JWT tokens and bcrypt password hashing |
+| 🏦 Account Management | Create Savings and Checking accounts with unique account numbers |
+| 💸 Fund Transfers | Transfer money between accounts with real-time balance updates |
+| 📊 Transaction History | View complete transaction statements with filtering |
+| 📋 Loan Applications | Apply for Personal, Home, Education, or Business loans with EMI calculation |
+| 🛡️ Fraud Detection | Automatic flagging of suspicious transactions using rule-based engine |
+| 🚨 Fraud Alerts | Admin dashboard for reviewing flagged transactions |
 
 ---
 
@@ -79,12 +80,12 @@ Built using **React.js**, **Node.js**, **TypeScript**, **Express.js**, and **Mon
 
 | Layer | Technology | Purpose |
 |:---|:---|:---|
-| **Frontend** | React.js + Tailwind CSS | User interface & styling |
-| **Backend** | Node.js + Express.js | REST API server |
-| **Language** | TypeScript | Type safety across stack |
-| **Database** | MongoDB + Mongoose | Data storage & ODM |
-| **Authentication** | JWT + bcrypt | Secure auth & password hashing |
-| **Build Tool** | Vite | Fast frontend development |
+| Frontend | React.js + Tailwind CSS | User interface & styling |
+| Backend | Node.js + Express.js | REST API server |
+| Language | TypeScript | Type safety across stack |
+| Database | MongoDB + Mongoose | Data storage & ODM |
+| Authentication | JWT + bcrypt | Secure auth & password hashing |
+| Build Tool | Vite | Fast frontend development |
 
 ---
 
@@ -119,24 +120,24 @@ For detailed diagrams, see:
 
 ## Design Patterns
 
-PayShield implements **5 Gang of Four (GoF) design patterns**:
+PayShield implements 5 Gang of Four (GoF) design patterns:
 
 ### 1. 🔒 Singleton Pattern (Creational)
-**Used in:** `DatabaseConnection` — ensures a single MongoDB connection instance.
+Used in: `DatabaseConnection` — ensures a single MongoDB connection instance.
 
 ### 2. 🏭 Factory Pattern (Creational)
-**Used in:** `AccountFactory` — creates Savings or Checking accounts with different configurations.
+Used in: `AccountFactory` — creates Savings or Checking accounts with different configurations.
 
 ### 3. 🎯 Strategy Pattern (Behavioral)
-**Used in:** Fraud Detection — interchangeable fraud detection rules.
+Used in: Fraud Detection — interchangeable fraud detection rules.
 
 ### 4. 👀 Observer Pattern (Behavioral)
-**Used in:** Transaction events — observers are notified when fraud is detected.
+Used in: Transaction events — observers are notified when fraud is detected.
 
 ### 5. 📦 Command Pattern (Behavioral)
-**Used in:** Banking transactions — encapsulated as command objects with `execute()` and `undo()`.
+Used in: Banking transactions — encapsulated as command objects with `execute()` and `undo()`.
 
-📖 **Full documentation:** [Design Patterns Documentation](./docs/design-patterns.md)
+📖 Full documentation: [Design Patterns Documentation](./docs/design-patterns.md)
 
 ---
 
@@ -194,7 +195,7 @@ erDiagram
     }
 ```
 
-📖 **Full ER diagram:** [ER Diagram Documentation](./diagrams/er-diagram.md)
+📖 Full ER diagram: [ER Diagram Documentation](./diagrams/er-diagram.md)
 
 ---
 
@@ -203,21 +204,21 @@ erDiagram
 ### OOP Concepts Used
 | Concept | Where Applied |
 |:---|:---|
-| **Encapsulation** | Password hashing hidden inside User model; balance only modified via service methods |
-| **Abstraction** | Service layer hides database queries from controllers |
-| **Inheritance** | SavingsAccount and CheckingAccount extend base Account |
-| **Polymorphism** | Multiple fraud strategies implement IFraudStrategy interface |
+| Encapsulation | Password hashing hidden inside User model; balance only modified via service methods |
+| Abstraction | Service layer hides database queries from controllers |
+| Inheritance | SavingsAccount and CheckingAccount extend base Account |
+| Polymorphism | Multiple fraud strategies implement IFraudStrategy interface |
 
 ### SOLID Principles
 | Principle | Application |
 |:---|:---|
-| **S** — Single Responsibility | Each service handles one domain (Auth, Account, Transaction, Loan) |
-| **O** — Open/Closed | Fraud engine extensible via new strategies without modification |
-| **L** — Liskov Substitution | Account subtypes are interchangeable |
-| **I** — Interface Segregation | Small, focused interfaces (IUser, IAccount, ITransaction) |
-| **D** — Dependency Inversion | Controllers depend on service abstractions |
+| S — Single Responsibility | Each service handles one domain (Auth, Account, Transaction, Loan) |
+| O — Open/Closed | Fraud engine extensible via new strategies without modification |
+| L — Liskov Substitution | Account subtypes are interchangeable |
+| I — Interface Segregation | Small, focused interfaces (IUser, IAccount, ITransaction) |
+| D — Dependency Inversion | Controllers depend on service abstractions |
 
-📖 **Full documentation:** [OOP Concepts](./docs/oop-concepts.md) | [SOLID Principles](./docs/solid-principles.md)
+📖 Full documentation: [OOP Concepts](./docs/oop-concepts.md) | [SOLID Principles](./docs/solid-principles.md)
 
 ---
 
@@ -284,11 +285,11 @@ npm run dev
 
 | Name | ID | Role |
 |:---|:---|:---|
-| **Dhanvin Vadlamudi** | 2401010150 | Team Lead (Auth, Core Setup, Singleton) |
-| **Nipun Patlori** | 2401010323 | Backend (Accounts, Transactions, Factory, Command) |
-| **Tejaswini Palwai** | 2401010314 | Backend (Fraud Engine, Strategy, Observer) |
-| **Meka Chaitanya Sai** | 2401010275 | Structure (Routing, Middleware, Layout) |
-| **Killi Akshith Kumar** | 2401010230 | Documentation (Diagrams, Database, README) |
+| Dhanvin Vadlamudi | 2401010150 | Team Lead (Auth, Core Setup, Singleton) |
+| Nipun Patlori | 2401010323 | Backend (Accounts, Transactions, Factory, Command) |
+| Tejaswini Palwai | 2401010314 | Backend (Fraud Engine, Strategy, Observer) |
+| Meka Chaitanya Sai | 2401010275 | Structure (Routing, Middleware, Layout) |
+| Killi Akshith Kumar | 2401010230 | Documentation (Diagrams, Database, README) |
 
 ---
 

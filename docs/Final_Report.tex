@@ -94,13 +94,13 @@ The system addresses the critical problem of transactional security in the NoSQL
 The system adheres to a strict \textbf{3-Tier Layered Architecture}, ensuring high modularity and loose coupling between components.
 
 \subsection{Presentation Layer (Frontend)}
-Developed using **React.js** and **TypeScript**, the frontend utilizes a custom CSS design system rather than generic utility frameworks. This ensures a unique, high-premium aesthetic tailored for financial transparency. State management is handled through React Context (AuthContext), ensuring secure JWT propagation across the application.
+Developed using React.js and TypeScript, the frontend utilizes a custom CSS design system rather than generic utility frameworks. This ensures a unique, high-premium aesthetic tailored for financial transparency. State management is handled through React Context (AuthContext), ensuring secure JWT propagation across the application.
 
 \subsection{Business Logic Layer (Backend)}
-The core intelligence resides in the **Node.js/Express** server. This layer is entirely decoupled from both the UI and the Database, communicating via standardized RESTful endpoints. It implements the primary business rules including interest calculation, overdraft protection, and the fraud detection pipeline.
+The core intelligence resides in the Node.js/Express server. This layer is entirely decoupled from both the UI and the Database, communicating via standardized RESTful endpoints. It implements the primary business rules including interest calculation, overdraft protection, and the fraud detection pipeline.
 
 \subsection{Data Access Layer (Database)}
-**MongoDB Atlas** provides the persistence layer. By utilizing a document-based model, PayShield handles the polymorphic nature of banking products (e.g., Savings vs. Checking accounts) without the rigid schema constraints of traditional SQL, while maintaining relationship integrity through ObjectId referencing.
+MongoDB Atlas provides the persistence layer. By utilizing a document-based model, PayShield handles the polymorphic nature of banking products (e.g., Savings vs. Checking accounts) without the rigid schema constraints of traditional SQL, while maintaining relationship integrity through ObjectId referencing.
 
 ---
 
@@ -143,7 +143,7 @@ Every fund transfer is encapsulated as a \texttt{Command} object. This treats tr
 \end{description}
 
 \subsection{Object-Oriented Excellence}
-PayShield leverages **Inheritance** for hierarchical account modeling and **Encapsulation** to protect sensitive financial logic. **Abstraction** is utilized to hide the complexity of Mongoose aggregation pipelines behind simple, readable service methods.
+PayShield leverages Inheritance for hierarchical account modeling and Encapsulation to protect sensitive financial logic. Abstraction is utilized to hide the complexity of Mongoose aggregation pipelines behind simple, readable service methods.
 
 ---
 
@@ -169,17 +169,17 @@ PayShield leverages **Inheritance** for hierarchical account modeling and **Enca
 
 % --- Section 6: Database & Data Integrity ---
 \section{Data Modeling \& Persistence}
-The database utilizes a **Referential NoSQL** approach. 
-- **User Collection:** Stores hashed credentials and role-based metadata.
-- **Account Collection:** Links to User via \texttt{userId} reference, storing current balance and account type.
-- **Transaction Collection:** Stores immutable logs of money movement between account ObjectIds.
-- **FraudAlert Collection:** Links specific Transaction IDs to triggered security rules.
+The database utilizes a Referential NoSQL approach. 
+- User Collection: Stores hashed credentials and role-based metadata.
+- Account Collection: Links to User via \texttt{userId} reference, storing current balance and account type.
+- Transaction Collection: Stores immutable logs of money movement between account ObjectIds.
+- FraudAlert Collection: Links specific Transaction IDs to triggered security rules.
 
 ---
 
 % --- Section 7: SDLC & Methodology ---
 \section{SDLC Methodology}
-PayShield was developed using the **Agile-Scrum** methodology. We utilized 6 rapid sprints:
+PayShield was developed using the Agile-Scrum methodology. We utilized 6 rapid sprints:
 \begin{itemize}
     \item \textbf{Sprint 1:} Requirements Analysis \& Data Modeling.
     \item \textbf{Sprint 2:} Core Backend \& Authentication Infrastructure.
@@ -195,7 +195,7 @@ PayShield was developed using the **Agile-Scrum** methodology. We utilized 6 rap
 \section{Conclusion \& Future Scope}
 PayShield demonstrates that modern web frameworks can achieve enterprise-grade stability when coupled with robust System Design patterns. By utilizing TypeScript for end-to-end type safety and GoF patterns for architectural flexibility, the system stands as a high-fidelity blueprint for secure digital banking.
 
-**Future Scope:** The modular architecture allows for seamless integration of AI-driven fraud prediction models and the expansion into multi-currency cross-border payment rails.
+Future Scope: The modular architecture allows for seamless integration of AI-driven fraud prediction models and the expansion into multi-currency cross-border payment rails.
 
 \newpage
 \begin{center}
