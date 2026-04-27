@@ -21,6 +21,13 @@
 
 ---
 
+### 📄 Project Reports
+- **Final Report (PDF):** [Download Report](./docs/sd.pdf)
+- **Technical Report (LaTeX):** [View LaTeX](./docs/Final_Report.tex)
+- **Technical Report (Markdown):** [View Markdown](./docs/Final_Report.md)
+
+---
+
 </div>
 
 ---
