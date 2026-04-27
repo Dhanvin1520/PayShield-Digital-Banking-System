@@ -44,6 +44,7 @@ A full-stack digital banking application with real-time fraud detection
 - [OOP & SOLID Principles](#oop--solid-principles)
 - [Folder Structure](#folder-structure)
 - [Getting Started](#getting-started)
+- [Testing](#testing)
 - [API Endpoints](#api-endpoints)
 - [Fraud Detection Rules](#fraud-detection-rules)
 - [Team Members](#team-members)
@@ -262,6 +263,32 @@ npm install
 
 # Start the development server
 npm run dev
+```
+
+---
+
+## Testing
+
+PayShield includes comprehensive test coverage for both the frontend and backend. Tests are automatically run via GitHub Actions on push and pull requests to ensure code quality.
+
+### Running Tests Locally
+
+**Backend Unit Tests**
+```bash
+cd src/server
+npm run test
+```
+
+**Frontend Unit Tests**
+```bash
+cd src/client
+npm run test
+```
+
+**Frontend Integration Tests**
+```bash
+cd src/client
+npm run test:integration
 ```
 
 ---
